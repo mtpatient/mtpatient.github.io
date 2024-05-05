@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hexo博客框架搭建</title>
+      <link href="/2023/02/17/2023-2-17-Hello-Hexo/"/>
+      <url>/2023/02/17/2023-2-17-Hello-Hexo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基于hexo博客框架搭建的个人博客"><a href="#基于hexo博客框架搭建的个人博客" class="headerlink" title="基于hexo博客框架搭建的个人博客"></a>基于hexo博客框架搭建的个人博客</h2><p>我一个菜鸟终于也搭建好了自己的博客，框架搭建和部署参考了B站up主<a href="https://space.bilibili.com/384068749?spm_id_from=333.337.0.0">codesheep</a> ，美化方面参考了<a href="https://www.fomal.cc/categories/%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/"> Fomalhaut🥝</a> </p><p>这篇文章主要总结个人在hexo框架搭建过程中所使用到的命令和遇到问题解决办法，参考视频为：<a href="https://www.bilibili.com/video/BV1Yb411a7ty/?spm_id_from=333.999.0.0&amp;vd_source=8a14b25cab195eceba569a742f64f401">手把手教你从0开始搭建自己的个人博客 |无坑版视频教程| hexo_哔哩哔哩_bilibili</a> </p><hr><h3 id="安装node-js支持"><a href="#安装node-js支持" class="headerlink" title="安装node.js支持"></a>安装node.js支持</h3><p>首先需要下载node.js，大家可自行到<a href="https://nodejs.org/en/download/">node.js</a> 根据自己所需要的版本下载</p><p><img src="https://s1.vika.cn/space/2023/02/18/4861c2e7dd3e411c99cc8547839bb562" alt=""></p><p>下载完成后，直接双击运行安装即可，可在cmd输入以下命令查看是否安装成功。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2023/02/18/3d9665422d324e30839fffa1833f56e8" alt=""></p><p>由于npm默认镜像源在国内较慢，输入以下命令更换淘宝镜像源，-g代表全局安装</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure><p>接下来可通过cnpm命令安装hexo框架</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure><p> 输入hexo -v 查看是否安装成功</p><hr><h3 id="安装hexo框架"><a href="#安装hexo框架" class="headerlink" title="安装hexo框架"></a>安装hexo框架</h3><p>新建一个文件夹，并在该文件夹下打开cmd，输入以下命令初始化hexo框架</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2023/02/18/8317543012d84f91b49fefbcd1874dd5" alt=""></p><p><img src="https://s1.vika.cn/space/2023/02/18/0cee4c8c0d7a44939ef96ad8c05aef9a" alt=""></p><p>通过以下命令启动博客进行本地预览</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2023/02/18/f69d78b51406414aa2e510435418cea0" alt=""></p><p><img src="https://s1.vika.cn/space/2023/02/18/ad0b022cac6c47d181b4b610109da173" alt=""></p><p>首页的文档的官方快速入门的一些命令，可在\source\_posts下创建自己的md文档，hexo框架会将其渲染到首页</p><p><img src="https://s1.vika.cn/space/2023/02/18/c4464dfa993b4bd2bfaf2a8103148439" alt=""></p><hr><h3 id="部署到github-io"><a href="#部署到github-io" class="headerlink" title="部署到github.io"></a>部署到github.io</h3><p>首先到GitHub新建一个仓库，注意仓库名必须为{username}.github.io，选择public，因为我已经创建过了，这里不再演示</p><p><img src="https://s1.vika.cn/space/2023/02/18/a4209075af7746aba08117648d05f3ab" alt=""></p><p>在你博客的目录下安装git插件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure><p>配置_config.yml文件</p><p>repo填的是你个人的GitHub仓库地址（未部署之前仓库内容为空）</p><p>通过hexo部署之前还需要确保自己安装好了git工具，并配置好了git的用户名和邮箱地址，这里不再多赘述。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;xxx&quot;</span><br><span class="line">git config --global user.name &quot;xxx&quot;</span><br></pre></td></tr></table></figure><p>完成以上步骤后通过以下命令部署到远端仓库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>浏览器通过{仓库名}即可访问， 例mtpatient.github.io。</p><hr><h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>下面以butterfly主题为例修改主题</p><p>在hexo的根目录下通过以下命令克隆主题</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br></pre></td></tr></table></figure><p>安装插件pug以及stylus渲染器:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure><p>其次修改_config.yml</p><p><img src="https://cdn.staticaly.com/gh/mtpatient/picGo_bed@main/img/20230218114339.png" alt=""></p><p>重新启动可预览效果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><hr><p>其它美化教程可以参考<a href="https://www.fomal.cc/categories/%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/">Fomalhaut🥝</a> </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Node.js </tag>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
